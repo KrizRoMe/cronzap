@@ -56,5 +56,4 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Whatsapp
-.wwebjs_auth/
-.wwebjs_cache/
+Whatsapp-session/

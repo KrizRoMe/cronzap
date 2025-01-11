@@ -6,7 +6,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-	imports: [ScheduleModule.forRoot(), ConfigModule],
+	imports: [ConfigModule, ScheduleModule.forRoot()],
 	controllers: [WhatsappController],
 	providers: [WhatsappService, WhatsappCronjobService],
 })

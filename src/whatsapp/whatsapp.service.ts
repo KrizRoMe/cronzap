@@ -8,8 +8,11 @@ export class WhatsappService implements OnModuleInit {
 
 	constructor() {
 		this.client = new Client({
-			authStrategy: new LocalAuth(),
+			authStrategy: new LocalAuth({
+				dataPath: './whatsapp-session',
+			}),
 			puppeteer: {
+				headless: true,
 				args: ['--no-sandbox', '--disable-setuid-sandbox'],
 			},
 		});
