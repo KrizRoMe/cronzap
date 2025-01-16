@@ -1,11 +1,13 @@
 services:
   api:
     container_name: api
-    build: .
+    image: ghcr.io/krizrome/cronzap:latest
     ports:
       - '${PORT}:8000'
     env_file:
       - .env
+    environment:
+      - BASE_API_URL=${BASE_API_URL}
     deploy:
       resources:
         limits:
