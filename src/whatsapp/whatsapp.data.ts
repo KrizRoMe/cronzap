@@ -32,7 +32,7 @@ export const whatsappData = [
 	{
 		guest: 'Maicol',
 		roomNumber: '7',
-		phoneNumber: '51922718881',
+		phoneNumber: '51992718881',
 		paymentDay: '27',
 	},
 	{
