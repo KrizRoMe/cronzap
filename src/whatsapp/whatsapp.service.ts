@@ -45,4 +45,23 @@ export class WhatsappService implements OnModuleInit {
 			throw new Error('No se pudo enviar el mensaje');
 		}
 	}
+
+	async sendGroupMessage(groupName: string, message: string): Promise<string> {
+		try {
+			const chats = await this.client.getChats();
+			const group = chats.find(
+				(chat) => chat.isGroup && chat.name === groupName,
+			);
+
+			if (!group) {
+				throw new Error(`No se encontró el grupo: ${groupName}`);
+			}
+			await this.client.sendMessage(group.id._serialized, message);
+
+			return `Mensaje enviado al grupo "${groupName}"`;
+		} catch (error) {
+			console.error('Error al enviar mensaje al grupo:', error);
+			throw new Error('No se pudo enviar el mensaje al grupo');
+		}
+	}
 }

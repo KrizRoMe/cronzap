@@ -1,3 +1,4 @@
+// Guest Data
 export const whatsappData = [
 	{
 		guest: 'Jacob',
@@ -76,5 +77,12 @@ export const whatsappData = [
 		roomNumber: '15',
 		phoneNumber: '51992007318',
 		paymentDay: '22',
+	},
+];
+
+// Spotify Sub Data
+export const whatsappData2 = [
+	{
+		paymentDay: '11',
 	},
 ];
