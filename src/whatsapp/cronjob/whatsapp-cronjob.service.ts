@@ -10,7 +10,7 @@ export class WhatsappCronjobService {
 		this.baseApiUrl = this.configService.get<string>('BASE_API_URL');
 	}
 
-	@Cron('0 9 * * * *', {
+	@Cron('0 0 9 * * *', {
 		name: 'whatsapp-cronjob',
 		timeZone: 'America/Lima',
 	})
