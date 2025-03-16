@@ -37,20 +37,19 @@ export class WhatsappController {
 		);
 	}
 
-	@Get('send-group-message')
+	@Get('send-spotify-sub-message')
 	async sendGroupMessage(): Promise<string[]> {
 		const now = new Date();
 		const formattedNowDay = getFormattedDay(now);
-		const groupName = 'Spotify Premium Sub';
 
 		return await Promise.all(
 			whatsappData2.map(async (data) => {
 				try {
-					const { paymentDay } = data;
+					const { phoneNumber, paymentDay } = data;
 
 					if (formattedNowDay === paymentDay) {
-						return this.whatsappService.sendGroupMessage(
-							groupName,
+						return this.whatsappService.sendMessage(
+							phoneNumber,
 							LV_WHATSAPP_MESSAGE_TEMPLATE_2,
 						);
 					}

@@ -83,6 +83,15 @@ export const whatsappData = [
 // Spotify Sub Data
 export const whatsappData2 = [
 	{
+		phoneNumber: '51942622273',
+		paymentDay: '11',
+	},
+	{
+		phoneNumber: '51972136801',
+		paymentDay: '11',
+	},
+	{
+		phoneNumber: '51992418185',
 		paymentDay: '11',
 	},
 ];

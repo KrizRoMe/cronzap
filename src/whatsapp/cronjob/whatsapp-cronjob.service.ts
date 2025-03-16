@@ -16,9 +16,10 @@ export class WhatsappCronjobService {
 	})
 	async handleCron() {
 		const endpoint = `${this.baseApiUrl}/whatsapp/send-message`;
+		const endpoint2 = `${this.baseApiUrl}/whatsapp/send-spotify-sub-message`;
 
 		try {
-			await fetch(endpoint);
+			await Promise.all([fetch(endpoint), fetch(endpoint2)]);
 		} catch (error) {
 			throw new Error(`Error in cronjob: ${error}`);
 		}
