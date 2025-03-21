@@ -8,6 +8,8 @@ services:
       - .env
     environment:
       - BASE_API_URL=${BASE_API_URL}
+      - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
     deploy:
       resources:
         limits:
@@ -16,6 +18,10 @@ services:
     volumes:
       - ./whatsapp-session:/app/whatsapp-session
     restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
 
   nginx:
     container_name: nginx

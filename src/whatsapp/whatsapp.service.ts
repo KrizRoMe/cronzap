@@ -13,7 +13,12 @@ export class WhatsappService implements OnModuleInit {
 			}),
 			puppeteer: {
 				headless: true,
-				args: ['--no-sandbox', '--disable-setuid-sandbox'],
+				args: [
+					'--no-sandbox',
+					'--disable-setuid-sandbox',
+					'--disable-gpu',
+					'--disable-dev-shm-usage',
+				],
 			},
 		});
 
@@ -32,7 +37,14 @@ export class WhatsappService implements OnModuleInit {
 	}
 
 	async onModuleInit() {
-		await this.client.initialize();
+		try {
+			console.log('Inicializando cliente de WhatsApp...');
+			await this.client.initialize();
+			console.log('Cliente de WhatsApp inicializado correctamente.');
+		} catch (error) {
+			console.error('Error al inicializar WhatsApp:', error);
+			setTimeout(() => this.onModuleInit(), 5000);
+		}
 	}
 
 	async sendMessage(phoneNumber: string, message: string): Promise<string> {
