@@ -1,12 +1,6 @@
 // Guest Data
 export const whatsappData = [
 	{
-		guest: 'Jacob',
-		roomNumber: '1',
-		phoneNumber: '51927606741',
-		paymentDay: '21',
-	},
-	{
 		guest: 'Jesus',
 		roomNumber: '4',
 		phoneNumber: '51942009634',
