@@ -1,6 +1,18 @@
 // Guest Data
 export const whatsappData = [
 	{
+		guest: 'Fran',
+		roomNumber: '1',
+		phoneNumber: '51928460268',
+		paymentDay: '01',
+	},
+	{
+		guest: 'Clinton',
+		roomNumber: '2',
+		phoneNumber: '51910250196',
+		paymentDay: '01',
+	},
+	{
 		guest: 'Jesus',
 		roomNumber: '4',
 		phoneNumber: '51942009634',
@@ -27,11 +39,11 @@ export const whatsappData = [
 	{
 		guest: 'Jasmin',
 		roomNumber: '8',
-		phoneNumber: '51968446790',
-		paymentDay: '18',
+		phoneNumber: '51974130224',
+		paymentDay: '01',
 	},
 	{
-		guest: 'Sody',
+		guest: 'Sodey',
 		roomNumber: '9',
 		phoneNumber: '51988355382',
 		paymentDay: '15',
@@ -55,15 +67,9 @@ export const whatsappData = [
 		paymentDay: '04',
 	},
 	{
-		guest: 'Wilder',
-		roomNumber: '13',
-		phoneNumber: '51900526460',
-		paymentDay: '07',
-	},
-	{
 		guest: 'Rorin',
 		roomNumber: '14',
-		phoneNumber: '51994740961',
+		phoneNumber: '51939889572',
 		paymentDay: '05',
 	},
 	{
