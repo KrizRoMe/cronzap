@@ -1,8 +1,7 @@
 services:
   api:
     container_name: api
-    # image: ghcr.io/krizrome/cronzap:latest
-    build: .
+    image: ghcr.io/krizrome/cronzap:latest
     ports:
       - '${PORT}:8000'
     env_file:
@@ -10,7 +9,6 @@ services:
     environment:
       - BASE_API_URL=${BASE_API_URL}
       - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-      # - PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
     deploy:
       resources:
         limits:
