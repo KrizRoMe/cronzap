@@ -1,10 +1,11 @@
-import { Injectable, type OnModuleInit } from '@nestjs/common';
+import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { Client, LocalAuth } from 'whatsapp-web.js';
 import * as qrcode from 'qrcode-terminal';
 
 @Injectable()
-export class WhatsappService implements OnModuleInit {
+export class WhatsappService implements OnApplicationBootstrap {
 	private client: Client;
+	private initializing = false;
 
 	constructor() {
 		this.client = new Client({
@@ -23,7 +24,7 @@ export class WhatsappService implements OnModuleInit {
 		});
 
 		this.client.on('qr', (qr) => {
-			console.log('Escanea este código QR para iniciar sesión:');
+			console.log('📲 Escanea este código QR para iniciar sesión:');
 			qrcode.generate(qr, { small: true });
 		});
 
@@ -39,10 +40,10 @@ export class WhatsappService implements OnModuleInit {
 			console.error('❌ Fallo en la autenticación:', msg);
 		});
 
-		this.client.on('disconnected', (reason) => {
+		this.client.on('disconnected', async (reason) => {
 			console.error('⚠️ Cliente desconectado:', reason);
 			console.log('🔄 Reintentando inicializar...');
-			this.client.initialize();
+			await this.initializeClient();
 		});
 
 		this.client.on('loading_screen', (percent, message) => {
@@ -50,9 +51,22 @@ export class WhatsappService implements OnModuleInit {
 		});
 	}
 
-	async onModuleInit() {
+	async onApplicationBootstrap() {
 		console.log('🚀 Inicializando cliente de WhatsApp...');
-		this.client.initialize();
+		await this.initializeClient();
+	}
+
+	private async initializeClient() {
+		if (this.initializing) return;
+		this.initializing = true;
+
+		try {
+			await this.client.initialize();
+		} catch (error) {
+			console.error('Error al inicializar el cliente de WhatsApp:', error);
+		} finally {
+			this.initializing = false;
+		}
 	}
 
 	async sendMessage(phoneNumber: string, message: string): Promise<string> {
